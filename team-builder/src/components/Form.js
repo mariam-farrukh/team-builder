@@ -20,12 +20,12 @@ const Form = ({addTeamMember}) => {
         const addMember = addTeamMember;
         addMember(member);
         event.preventDefault();
-        console.log("name", addMember);
       }
     return (
         <div className = 'form'>
             <form onSubmit = {handleSubmit}>
-                <label> Name
+                <div>Name:</div>
+                <label> 
                     <input 
                         name='name'
                         type='text'
@@ -33,8 +33,9 @@ const Form = ({addTeamMember}) => {
                         value={member.name}
                         onChange={handleChange}
                     />
-                </label>
-                <label> Email
+                </label> 
+                <div>Email:</div>
+                <label>
                 <input 
                         name='email'
                         type='email'
@@ -43,7 +44,8 @@ const Form = ({addTeamMember}) => {
                         onChange={handleChange}
                     />
                 </label>
-                <label> Role
+                <div>Role</div>
+                <label> 
                 <input 
                         name='role'
                         type='text'
