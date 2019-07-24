@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 
-function Form() {
-    const [addMemeber, setAddMember] = useState({
+const Form = ({addTeamMember}) => {
+    const [member, setMember] = useState({
         name: '',
         email: '',
         role: '',
     })
-    function changeHandler(event) {
-        const updatedMember = { ...addMemeber, [event.target.name]: event.target.value};
+    function handleChange(event) {
+        const updatedMember = { ...member, [event.target.name]: event.target.value};
         console.log(
-            "changeHandler",
+            "handleChange",
             event.target.name,
             event.target.value,
             updatedMember
         );
-        setAddMember(updatedMember);
+        setMember(updatedMember);
     };
-    const submitHandler = event => {
+    function handleSubmit(event) {
+        const addMember = addTeamMember;
+        addMember(member);
         event.preventDefault();
-    };
+        console.log("name", addMember);
+      }
     return (
         <div className = 'form'>
-            <form onSubmit = {submitHandler}>
+            <form onSubmit = {handleSubmit}>
                 <label> Name
                     <input 
                         name='name'
                         type='text'
                         placeholder = 'Name'
-                        value={addMemeber.name}
-                        onChange={changeHandler}
+                        value={member.name}
+                        onChange={handleChange}
                     />
                 </label>
                 <label> Email
@@ -36,8 +39,8 @@ function Form() {
                         name='email'
                         type='email'
                         placeholder = 'Email'
-                        value={addMemeber.email}
-                        onChange={changeHandler}
+                        value={member.email}
+                        onChange={handleChange}
                     />
                 </label>
                 <label> Role
@@ -45,8 +48,8 @@ function Form() {
                         name='role'
                         type='text'
                         placeholder = 'Role'
-                        value={addMemeber.role}
-                        onChange={changeHandler}
+                        value={member.role}
+                        onChange={handleChange}
                     />
                 </label>
                 <button>Submit</button>
