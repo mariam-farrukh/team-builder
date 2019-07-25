@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Member({ teamData}) {
+function Member({ teamData, setMemberToEdit}) {
 
     return (
         <div>
@@ -9,6 +9,7 @@ function Member({ teamData}) {
                 <li>{teamData.email}</li>
                 <li>{teamData.role}</li>
             </ul>
+            <button onClick={() => setMemberToEdit(teamData)}>Edit</button>
         </div>
     );
 }

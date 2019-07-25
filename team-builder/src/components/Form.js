@@ -6,6 +6,8 @@ const Form = ({addTeamMember}) => {
         email: '',
         role: '',
     })
+    // const[isEditing, setIsEditing] = useState(false);
+
     function handleChange(event) {
         const updatedMember = { ...member, [event.target.name]: event.target.value};
         console.log(
@@ -20,7 +22,8 @@ const Form = ({addTeamMember}) => {
         const addMember = addTeamMember;
         addMember(member);
         event.preventDefault();
-      }
+    }
+
     return (
         <div className = 'form'>
             <form onSubmit = {handleSubmit}>

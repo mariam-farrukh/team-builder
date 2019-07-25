@@ -6,13 +6,25 @@ import Member from "./components/Member.js"
 function App() {
   const[team, setTeam] = useState([]);
   console.log(team);
+  const[memberToEdit, setMemberToEdit] = useState('');
+  
+  const editMember = (editTeamMember) => {
+    const editTeam = team.map(member => {
+      if (member === memberToEdit) {
+        return (editTeamMember);
+      } else {
+        return member;
+      }
+    })
+    setTeam(editTeam);
+  }
   const addTeamMember = (member) => {
     return setTeam([...team, member]);
     
   }
  
   let teamMemberList = team.map(singleTeamMember => 
-    <Member key={singleTeamMember.email} teamData={singleTeamMember}/>
+    <Member key={singleTeamMember} teamData={singleTeamMember} editMember={editMember} memberToEdit={memberToEdit}/>
   );
       
   return (
@@ -23,6 +35,7 @@ function App() {
       <div>
         <Form 
           addTeamMember={addTeamMember}
+          setMemberToEdit={setMemberToEdit}
         />
       </div>
       <div>
